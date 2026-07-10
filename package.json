@@ -1,0 +1,12 @@
+{
+  "name": "uno-multiplayer-game",
+  "version": "1.0.0",
+  "description": "Multiplayer online UNO game with React, Tailwind CSS, Socket.io, and Express.",
+  "scripts": {
+    "install:all": "npm install --prefix backend && npm install --prefix frontend",
+    "dev": "npx concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

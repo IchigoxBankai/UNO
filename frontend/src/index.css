@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  .glass-panel-heavy {
+    background: rgba(13, 10, 25, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .neon-glow-red {
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
+  }
+  .neon-glow-blue {
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+  }
+  .neon-glow-green {
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+  }
+  .neon-glow-yellow {
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+  }
+  .neon-glow-purple {
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px) rotate(-1deg); }
+  75% { transform: translateX(6px) rotate(1deg); }
+}
+
+.animate-shake {
+  animation: shake 0.2s ease-in-out 0s 2;
+}
+
+@keyframes card-deal {
+  from {
+    transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0, 0) scale(1) rotate(var(--rotation, 0deg));
+    opacity: 1;
+  }
+}
+
+.deal-card {
+  animation: card-deal 0.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+/* Elegant radial mesh background */
+.radial-mesh-bg {
+  background-color: #0d0a19;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(239, 68, 68, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(16, 185, 129, 0.15) 0px, transparent 50%);
+  background-attachment: fixed;
+}
