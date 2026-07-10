@@ -33,7 +33,6 @@ export const Card = ({ card, onClick, isPlayable = true, isOpponent = false, isS
 
   // Render symbol in the center
   const renderCenterSymbol = () => {
-    // Underline helper for 6 and 9
     const isUnderlined = value === '6' || value === '9';
 
     switch (value) {
@@ -63,9 +62,7 @@ export const Card = ({ card, onClick, isPlayable = true, isOpponent = false, isS
       case 'wild_draw4':
         return (
           <div className="relative flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14">
-            {/* Inner +4 overlay */}
             <span className="text-sm sm:text-base md:text-xl font-black italic text-black z-10 font-sans tracking-tighter drop-shadow-md">+4</span>
-            {/* Quad color background */}
             <div className="absolute inset-0 grid grid-cols-2 rotate-[25deg] overflow-hidden rounded-full border border-white/50">
               <div className="bg-[#e8222c]"></div>
               <div className="bg-[#0066cc]"></div>
@@ -116,6 +113,11 @@ export const Card = ({ card, onClick, isPlayable = true, isOpponent = false, isS
     }
   };
 
+  // Playability styles: keep fully colored, but disable cursor/hover if not playable
+  const playabilityClass = isPlayable 
+    ? 'cursor-pointer hover:shadow-2xl shadow-indigo-500/10' 
+    : 'cursor-not-allowed opacity-90 brightness-[0.8]';
+
   return (
     <motion.button
       whileHover={isPlayable ? { y: -20, scale: 1.05 } : {}}
@@ -125,7 +127,7 @@ export const Card = ({ card, onClick, isPlayable = true, isOpponent = false, isS
       className={`relative rounded-xl border-2 select-none shadow-lg transition-all flex flex-col items-center justify-between p-1.5 sm:p-2 overflow-hidden
         ${colorClass} 
         ${isSmall ? 'w-10 h-16 sm:w-12 sm:h-20' : 'w-16 h-24 sm:w-20 sm:h-30 md:w-24 md:h-36'} 
-        ${isPlayable ? 'cursor-pointer hover:shadow-2xl' : 'opacity-55 cursor-not-allowed'}`}
+        ${playabilityClass}`}
     >
       {/* Top Left Corner Indicator */}
       <div className="self-start flex items-center justify-center p-0.5">
@@ -134,8 +136,8 @@ export const Card = ({ card, onClick, isPlayable = true, isOpponent = false, isS
 
       {/* Signature White Slanted Oval in Center */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-[82%] h-[68%] rounded-[50%] bg-white rotate-[-25deg] flex items-center justify-center shadow-inner">
-          {/* Symbol inside the oval (rotated back to look straight) */}
+        <div className="w-[82%] h-[68%] rounded-[50%] bg-white rotate-[-25deg] flex items-center justify-center shadow-md">
+          {/* Symbol inside the oval */}
           <div className="rotate-[25deg] flex items-center justify-center">
             {renderCenterSymbol()}
           </div>
